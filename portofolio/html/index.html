@@ -5,46 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jason — CMD Portfolio</title>
   <meta name="description" content="Portfolio van Jason — CMD (Communicatie & Multimedia Design)">
-  <meta name="theme-color" content="#ffbb00"/>
+  <meta name="theme-color" content="#fc9403"/>
   <meta property="og:title" content="Jason — CMD Portfolio" />
   <meta property="og:description" content="Storytelling, UX/UI, film en Arduino projecten." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="logo.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
-    /* =====================
-       Design Tokens
-    ====================== */
     :root{
       --accent:#fc9403; 
-      --bg: #0e0e10; 
-      --card: #15161a; 
-      --muted: #9aa3ad; 
-      --text: #eef2f6;
+      --bg:#0e0e10; 
+      --card:#15161a; 
+      --muted:#9aa3ad; 
+      --text:#eef2f6;
 
-      --radius: 14px;
-      --shadow-lg: 0 12px 30px rgba(2,6,23,.5);
-      --shadow-md: 0 8px 24px rgba(2,6,23,.35);
+      --radius:14px;
+      --shadow-lg:0 12px 30px rgba(2,6,23,.5);
+      --shadow-md:0 8px 24px rgba(2,6,23,.35);
 
-      --heading: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      --body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    }
-    @media (prefers-color-scheme: light){
-      html[data-theme="auto"]:root{
-        --bg:#f6f7f9; --card:#ffffff; --text:#111; --muted:#5b6470;
-      }
+      --heading:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+
+      --heroY:50%;
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--body);
-      scroll-behavior:smooth;}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--body);scroll-behavior:smooth}
     img{max-width:100%;display:block}
 
-    /* ===== Skip link for a11y ===== */
+    /* a11y */
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:var(--text);color:#111;padding:8px 12px;border-radius:10px;z-index:1000}
 
-    /* ===== Topbar + Progress ===== */
+    /* Topbar + progress */
     .topbar{position:fixed;top:0;left:0;right:0;height:68px;z-index:120;pointer-events:none}
     .topbar-inner{position:relative;height:100%}
     .nav{
@@ -58,10 +51,9 @@
     .logo-right img{height:56px;width:auto;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35));transition:transform .25s ease, opacity .25s ease}
     .logo-right:hover img{transform:scale(1.04);opacity:.95}
 
-    /* Scroll progress */
     .progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--accent),#fff);width:0;z-index:200}
 
-    /* ===== General layout ===== */
+    /* Sections */
     section{min-height:100vh;display:grid;place-items:center;padding:92px 32px 40px;position:relative;isolation:isolate}
     .panel{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));border-radius:var(--radius);padding:36px;box-shadow:var(--shadow-lg);width:min(1100px,92vw)}
     h1,h2{margin:0 0 10px;font-family:var(--heading)}
@@ -69,8 +61,8 @@
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#111;padding:12px 16px;border-radius:12px;font-weight:800;text-decoration:none}
     .btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
-    /* ===== Hero ===== */
-    #home::before{content:"";position:absolute;inset:0;background:url('2af59ba6-6f4a-4203-ab77-7cd8c730cdac.JPG') center/cover no-repeat;filter:blur(10px) brightness(.7);transform:scale(1.06);z-index:0}
+    /* Hero */
+    #home::before{content:"";position:absolute;inset:0;background:url('2af59ba6-6f4a-4203-ab77-7cd8c730cdac.JPG') center/cover no-repeat;filter:blur(10px) brightness(.7);transform:scale(1.06);z-index:0;background-position:50% var(--heroY)}
     .overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,6,8,.25),rgba(6,6,8,.55))}
     .hero .content{position:relative;z-index:2;padding:20px;text-align:center}
     .hero h1{font-size:clamp(32px,7vw,68px);letter-spacing:.2px}
@@ -78,7 +70,7 @@
     .hero .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 0}
     .badge{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);padding:8px 12px;border-radius:999px;font-size:12px}
 
-    /* ===== About ===== */
+    /* About */
     #wie-ben-ik{display:grid;place-items:center}
     .about-wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr min(42vw,560px);align-items:center;gap:40px;width:min(1200px,92vw)}
     .about-text{max-width:560px}
@@ -88,7 +80,7 @@
     .pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);padding:9px 14px;border-radius:999px;font-weight:800;font-size:13px;color:#fff;backdrop-filter:blur(2px);width:max-content}
     .pill .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:var(--accent);vertical-align:middle}
 
-    /* ===== Grids / Work ===== */
+    /* Grids */
     .gallery,.popgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:16px;position:relative;z-index:1}
     .tile{background:var(--card);border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.06)}
     .tile img,.tile video{display:block;width:100%;height:260px;object-fit:cover}
@@ -98,17 +90,17 @@
     .popgrid .tile{transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;cursor:pointer}
     .popgrid .tile:hover{transform:translateY(-6px) scale(1.02);z-index:5;box-shadow:0 16px 36px rgba(0,0,0,.45);filter:saturate(1.1)}
 
-    /* Sticky GIF column */
+    /* Figma layout */
     .figma-wrap{display:grid;grid-template-columns:1fr min(320px,30vw);gap:24px;align-items:start}
     .figma-gif{position:sticky;top:90px;border-radius:12px;overflow:hidden;width:100%;align-self:start}
     .figma-gif img{display:block;width:100%;height:auto;max-height:68vh;object-fit:contain}
 
-    /* Video */
-    .yt-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.45);transform:scale(1.02);transition:transform .25s ease, box-shadow .25s ease}
-    .yt-wrap:hover{transform:scale(1.05);box-shadow:0 12px 35px rgba(0,0,0,.55)}
+    /* YouTube */
+    .yt-wrap{position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,0.45);transform:scale(1.02);transition:transform .25s ease, box-shadow .25s ease}
+    .yt-wrap:hover{transform:scale(1.05);box-shadow:0 12px 35px rgba(0,0,0,0.55)}
     .yt-wrap iframe{width:100%;height:100%;border:0;display:block}
 
-    /* Film & Arduino layout */
+    /* Film & Arduino */
     .film-wrap,.arduino-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:start;margin-top:30px}
     .film-video video,.arduino-video video{width:100%;height:auto;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.4);max-height:65vh;object-fit:cover;display:block;margin:auto}
     .film-info h3,.arduino-info h3{margin-top:0;font-size:22px}
@@ -124,14 +116,70 @@
     @keyframes pop{0%{opacity:0;transform:scale(.9)}60%{opacity:1;transform:scale(1.03)}100%{transform:scale(1)}}
     .splash.hidden{opacity:0;visibility:hidden;pointer-events:none}
 
-    /* Reveal on scroll */
+    /* Reveal */
     .reveal{opacity:0;transform:translateY(16px);filter:blur(4px)}
     .reveal.in{opacity:1;transform:none;filter:none;transition:opacity .6s ease, transform .6s ease, filter .6s ease}
 
-    /* Controls (accent + theme) */
-            .control label{font-size:12px;color:var(--text);opacity:.8}
-    .control input[type="color"]{appearance:none;border:none;width:22px;height:22px;border-radius:50%;padding:0;background:transparent}
-    
+    /* Ambient orbs */
+    .orbs{position:fixed;inset:-10% -10% 0 -10%;z-index:0;pointer-events:none;filter:blur(40px) saturate(1.1);opacity:.35}
+    .orb{position:absolute;width:34vmax;height:34vmax;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(252,148,3,.9), rgba(252,148,3,.05) 60%);animation:float 18s ease-in-out infinite}
+    .orb:nth-child(2){left:60%;top:10%;animation-duration:22s}
+    .orb:nth-child(3){left:10%;top:50%;animation-duration:26s}
+    @keyframes float{0%,100%{transform:translateY(-4%) translateX(0)}50%{transform:translateY(6%) translateX(2%)}}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:300;padding:20px}
+    .lightbox.open{display:flex}
+    .lightbox-inner{max-width:min(1100px,92vw);max-height:86vh;background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+    .lightbox header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .lightbox header h4{margin:0;font-family:var(--heading)}
+    .lightbox .body img,.lightbox .body video{display:block;max-width:100%;max-height:78vh;width:auto;height:auto}
+    .close-btn{background:transparent;border:0;color:var(--text);font-size:24px;cursor:pointer}
+
+    /* Dividers */
+    .divider{position:relative;height:64px;margin:-32px 0}
+    .divider svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+    /* ==== Scrollytelling: compact left, centered right ==== */
+    #aanpak{position:relative}
+    .scrollytell{
+      display:grid;
+      grid-template-columns:min(280px,28vw) 1fr; /* small left column */
+      gap:28px;
+      align-items:center;
+      width:min(1100px,92vw);
+      margin-inline:auto;
+    }
+    .sticky-visual{
+      position:sticky; top:92px;
+      background:transparent; border:none; box-shadow:none; padding:0; 
+      display:grid; place-items:start;
+    }
+    /* Oranje paneel dat meeloopt met de actieve stap */
+    .step-panel{
+      width:100%;
+      min-height:84px;               /* ongeveer hoogte van 1 step */
+      border-radius:14px;
+      background:var(--accent);
+      color:#111;
+      padding:14px 16px;
+      box-shadow:var(--shadow-md);
+      display:flex;flex-direction:column;justify-content:center;
+      transition:box-shadow .25s ease; /* voor hover-glow */
+    }
+    .step-panel small{opacity:.8;font-weight:700;letter-spacing:.02em}
+    .step-panel .title{font-weight:900}
+
+    /* Rechter kolom gecentreerd & max-breedte */
+    .steps{
+      display:flex;flex-direction:column;gap:16px;position:relative;
+      max-width:640px;margin-inline:auto;
+    }
+    .steps::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent), transparent)}
+    .step{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 16px 14px 28px;box-shadow:var(--shadow-md);opacity:.55;transform:translateY(6px);transition:opacity .35s, transform .35s, border-color .2s, box-shadow .2s, background .2s;cursor:pointer}
+    .step.active{opacity:1;transform:none;outline:1px solid rgba(255,255,255,.1)}
+    .step:hover,.step:focus-visible{opacity:1;transform:translateY(-2px);border-color:rgba(252,148,3,.6);box-shadow:0 14px 36px rgba(252,148,3,.18), 0 8px 22px rgba(0,0,0,.35);background:radial-gradient(220px 60px at 12% 20%, rgba(252,148,3,.12), transparent)}
+
     /* Mobile */
     @media (max-width:980px){
       .figma-wrap{grid-template-columns:1fr}
@@ -139,6 +187,8 @@
       .film-wrap,.arduino-wrap{grid-template-columns:1fr}
       .film-video video,.arduino-video video{max-height:50vh;object-fit:contain}
       .nav{max-width:92vw;overflow:auto}
+      .scrollytell{grid-template-columns:1fr;gap:18px}
+      .sticky-visual{position:relative;top:auto}
     }
 
     /* Reduced motion */
@@ -149,43 +199,14 @@
 
     /* Focus styles */
     :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:10px}
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce){
-      *{animation:none!important;transition:none!important}
-      .yt-wrap:hover{transform:none}
-    }
-
-    /* Focus styles */
-    :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:10px}
-    /* ===== Ambient animated orbs ===== */
-    .orbs{position:fixed;inset:-10% -10% 0 -10%;z-index:0;pointer-events:none;filter:blur(40px) saturate(1.1);opacity:.35}
-    .orb{position:absolute;width:38vmax;height:38vmax;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(252,148,3,.9), rgba(252,148,3,.05) 60%);animation:float 18s ease-in-out infinite}
-    .orb:nth-child(2){left:60%;top:10%;animation-duration:22s}
-    .orb:nth-child(3){left:10%;top:50%;animation-duration:26s}
-    @keyframes float{0%,100%{transform:translateY(-4%) translateX(0)}50%{transform:translateY(6%) translateX(2%)}}
-
-    /* ===== Lightbox ===== */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:300;padding:20px}
-    .lightbox.open{display:flex}
-    .lightbox-inner{max-width:min(1100px,92vw);max-height:86vh;background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.6)}
-    .lightbox header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
-    .lightbox header h4{margin:0;font-family:var(--heading)}
-    .lightbox .body{padding:0}
-    .lightbox .body img,.lightbox .body video{display:block;max-width:100%;max-height:78vh;width:auto;height:auto}
-    .close-btn{background:transparent;border:0;color:var(--text);font-size:24px;cursor:pointer}
-
-    /* ===== Parallax helpers ===== */
-    :root{--heroY:50%}
-    #home::before{background-position:50% var(--heroY)}
-
-</style>
+  </style>
 </head>
 <body>
   <div class="orbs" aria-hidden="true">
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
+    <div class="orb"></div><div class="orb"></div><div class="orb"></div>
   </div>
+
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Project preview">
     <div class="lightbox-inner">
       <header>
@@ -195,6 +216,7 @@
       <div class="body" id="lb-body"></div>
     </div>
   </div>
+
   <a href="#home" class="skip-link">Direct naar inhoud</a>
   <div class="progress" id="progress"></div>
 
@@ -220,10 +242,7 @@
       <h1>Jason — Portfolio</h1>
       <p class="lead">Communicatie &amp; Multimedia Design</p>
       <div class="badges" aria-hidden="true">
-        <span class="badge">UX/UI</span>
-        <span class="badge">Figma</span>
-        <span class="badge">Film</span>
-        <span class="badge">Arduino</span>
+        <span class="badge">UX/UI</span><span class="badge">Figma</span><span class="badge">Film</span><span class="badge">Arduino</span>
       </div>
       <p style="margin-top:16px"><a class="btn magnet" href="#wie-ben-ik">Wie ben ik</a></p>
     </div>
@@ -249,6 +268,56 @@
       <div class="about-photo"><img src="IMG_6746.jpg" alt="Jason portret" width="900" height="1200" loading="lazy" decoding="async"></div>
     </div>
   </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 64" preserveAspectRatio="none" role="img" aria-label="decorative">
+      <path d="M0,32 C240,64 480,0 720,32 960,64 1200,0 1440,32 L1440,64 0,64 Z" fill="rgba(255,255,255,.06)"></path>
+    </svg>
+  </div>
+
+  <section id="aanpak">
+    <div class="panel reveal">
+      <h2>Mijn aanpak</h2>
+      <p>Van vaag idee naar tastbaar resultaat. Scroll of hover over de stappen — het oranje paneel reageert direct.</p>
+      <div class="scrollytell">
+        <aside class="sticky-visual" aria-hidden="true">
+          <!-- Oranje paneel -->
+          <div class="step-panel" aria-live="polite">
+            <small>Stap</small>
+            <div class="title" id="step-panel-title">Research →</div>
+          </div>
+        </aside>
+        <div class="steps">
+          <article class="step active" data-screen="Research →">
+            <h3>1. Research & probleemkader</h3>
+            <p>Interviews, deskresearch en journey maps om het echte probleem te vinden.</p>
+          </article>
+          <article class="step" data-screen="Schetsen →">
+            <h3>2. Schetsen & flows</h3>
+            <p>Task flows en low-fi schetsen om snel te valideren.</p>
+          </article>
+          <article class="step" data-screen="Prototype →">
+            <h3>3. Prototype</h3>
+            <p>Figma-prototype (interacties, states) om gedrag en content te testen.</p>
+          </article>
+          <article class="step" data-screen="Usability →">
+            <h3>4. Usability tests</h3>
+            <p>Think-aloud, SUS, task completion. Itereren op inzichten.</p>
+          </article>
+          <article class="step" data-screen="Ship ✔">
+            <h3>5. Visual polish & ship</h3>
+            <p>Design tokens, states, empty/error, animaties en documentatie.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 64" preserveAspectRatio="none" role="img" aria-label="decorative">
+      <path d="M0,32 C240,64 480,0 720,32 960,64 1200,0 1440,32 L1440,64 0,64 Z" fill="rgba(255,255,255,.06)"></path>
+    </svg>
+  </div>
 
   <section id="figma">
     <div class="panel reveal">
@@ -337,9 +406,6 @@
 
   <footer>© <span id="year"></span> Jason Rayappu — CMD Student • Communicatie &amp; Multimedia Design</footer>
 
-  <!-- =====================
-       Scripts (no deps)
-  ====================== -->
   <script>
     // Splash
     window.addEventListener('load', ()=> {
@@ -368,6 +434,7 @@
           const t=document.querySelector(href);
           if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
           links.forEach(l=>l.classList.remove('active'));
+          a.addEventListener('blur', ()=>a.classList.remove('active'), {once:true});
           a.classList.add('active');
         }
       });
@@ -401,20 +468,14 @@
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Accent color fixed (removed picker). Force theme-color meta
+    // theme-color meta
     document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--accent').trim());
 
-    // Hero parallax (scroll + mouse)
+    // Hero parallax
     const root = document.documentElement;
-    function parallax(){
-      const y = 50 + (window.scrollY * 0.02);
-      root.style.setProperty('--heroY', y + '%');
-    }
+    function parallax(){ const y = 50 + (window.scrollY * 0.02); root.style.setProperty('--heroY', y + '%'); }
     window.addEventListener('scroll', parallax, {passive:true});
-    window.addEventListener('mousemove', (e)=>{
-      const y = 45 + (e.clientY / window.innerHeight) * 10; // 45%–55%
-      root.style.setProperty('--heroY', y + '%');
-    }, {passive:true});
+    window.addEventListener('mousemove', (e)=>{ const y = 45 + (e.clientY / window.innerHeight) * 10; root.style.setProperty('--heroY', y + '%'); }, {passive:true});
 
     // Magnetic buttons
     document.querySelectorAll('.magnet').forEach(btn=>{
@@ -435,14 +496,14 @@
         const r = card.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width;
         const y = (e.clientY - r.top) / r.height;
-        const rx = (y - .5) * -8; // tilt up/down
-        const ry = (x - .5) * 10; // tilt left/right
+        const rx = (y - .5) * -8;
+        const ry = (x - .5) * 10;
         card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
       });
       card.addEventListener('mouseleave', ()=> card.style.transform='');
     });
 
-    // Lightbox for gallery/figma tiles
+    // Lightbox
     const lb = document.getElementById('lightbox');
     const lbBody = document.getElementById('lb-body');
     const lbTitle = document.getElementById('lb-title');
@@ -451,15 +512,8 @@
       lbTitle.textContent = title || 'Voorbeeld';
       lbBody.innerHTML = '';
       const isVideo = src.endsWith('.mp4');
-      if(isVideo){
-        const v = document.createElement('video');
-        v.controls = true; v.autoplay = true; v.src = src; v.style.maxWidth='100%';
-        lbBody.appendChild(v);
-      } else {
-        const img = new Image();
-        img.src = src; img.alt = alt || title || '';
-        lbBody.appendChild(img);
-      }
+      if(isVideo){ const v = document.createElement('video'); v.controls = true; v.autoplay = true; v.src = src; v.style.maxWidth='100%'; lbBody.appendChild(v); }
+      else { const img = new Image(); img.src = src; img.alt = alt || title || ''; lbBody.appendChild(img); }
       lb.classList.add('open');
     }
     function closeLB(){ lb.classList.remove('open'); lbBody.innerHTML=''; }
@@ -469,15 +523,68 @@
 
     document.querySelectorAll('.tile').forEach(tile=>{
       tile.addEventListener('click', ()=>{
-        const img = tile.querySelector('img, video');
-        if(!img) return;
-        const src = img.currentSrc || img.src || (img.querySelector('source')?.src || '');
-        openLB({src, alt: img.alt || '', title: tile.querySelector('h3')?.textContent});
+        const media = tile.querySelector('img, video');
+        if(!media) return;
+        const src = media.currentSrc || media.src || (media.querySelector('source')?.src || '');
+        openLB({src, alt: media.alt || '', title: tile.querySelector('h3')?.textContent});
       });
       tile.setAttribute('role','button');
       tile.setAttribute('tabindex','0');
       tile.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); tile.click(); } });
     });
+
+    // =====================================================
+    // Scrollytell: update oranje paneel met actieve stap
+    // =====================================================
+    const stepPanelTitle = document.getElementById('step-panel-title');
+    const steps = document.querySelectorAll('.step');
+
+    // Scroll-gedrag (bestaand)
+    const stObs = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting){
+          steps.forEach(s=>s.classList.remove('active'));
+          en.target.classList.add('active');
+          const txt = en.target.getAttribute('data-screen');
+          if(stepPanelTitle) stepPanelTitle.textContent = txt;
+          if('vibrate' in navigator) navigator.vibrate(8);
+        }
+      });
+    },{threshold:0.6, rootMargin:'-20% 0px -20% 0px'});
+    steps.forEach(s=> stObs.observe(s));
+
+    // Hover: direct updaten + subtiele glow zonder extra CSS klassen
+    const stepPanel = document.querySelector('.step-panel');
+    function showPanelFor(el, vibrate=false){
+      const txt = el.getAttribute('data-screen') || '';
+      if(stepPanelTitle) stepPanelTitle.textContent = txt;
+
+      // visuele feedback (CSS animate API)
+      if(stepPanel && stepPanel.animate){
+        stepPanel.animate(
+          [
+            { boxShadow:'0 0 0 0 rgba(252,148,3,0)' },
+            { boxShadow:'0 0 0 6px rgba(252,148,3,.35)' },
+            { boxShadow:'0 0 0 0 rgba(252,148,3,0)' }
+          ],
+          { duration:280, easing:'ease-out' }
+        );
+      }
+
+      // active state ook tonen
+      steps.forEach(s=>s.classList.remove('active'));
+      el.classList.add('active');
+
+      if (vibrate && 'vibrate' in navigator) navigator.vibrate(6);
+    }
+
+    steps.forEach(el=>{
+      el.addEventListener('mouseenter', ()=> showPanelFor(el, true));
+      el.addEventListener('focus',     ()=> showPanelFor(el, false), true);
+    });
+
+    // Year (nogmaals voor zekerheid als script later laadt)
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
